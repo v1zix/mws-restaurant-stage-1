@@ -104,7 +104,7 @@ initMap = () => {
 /**
  * Update page and map for current restaurants.
  */
-updateRestaurants = () => {
+const updateRestaurants = () => {
   const cSelect = document.getElementById('cuisines-select');
   const nSelect = document.getElementById('neighborhoods-select');
 
@@ -144,10 +144,12 @@ resetRestaurants = (restaurants) => {
 /**
  * Create all restaurants HTML and add them to the webpage.
  */
-fillRestaurantsHTML = (restaurants = self.restaurants) => {
+const fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
+  let count = 0;
   restaurants.forEach(restaurant => {
-    ul.append(createRestaurantHTML(restaurant));
+    ul.append(createRestaurantHTML(restaurant, count));
+    count += 1;
   });
   addMarkersToMap();
 }
@@ -155,8 +157,10 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 /**
  * Create restaurant HTML.
  */
-createRestaurantHTML = (restaurant) => {
+const createRestaurantHTML = (restaurant, count) => {
   const li = document.createElement('li');
+  li.setAttribute('tabindex', '0');
+  li.setAttribute('aria-labelledby', `restaurant-name-${count} restaurant-neighborhood-${count} restaurant-address-${count}`)
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
@@ -166,14 +170,17 @@ createRestaurantHTML = (restaurant) => {
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
+  name.id = `restaurant-name-${count}`;
   li.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
+  neighborhood.id = `restaurant-neighborhood-${count}`;
   li.append(neighborhood);
 
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
+  address.id = `restaurant-address-${count}`;
   li.append(address);
 
   const more = document.createElement('a');
