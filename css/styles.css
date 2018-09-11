@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
@@ -137,8 +142,9 @@ nav h1 a {
   list-style: outside none none;
   margin: 0;
   text-align: center;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  justify-items: center;
   justify-content: center;
 }
 #restaurants-list li {
@@ -275,4 +281,33 @@ nav h1 a {
 .reviewer-name {
   font-weight: bold;
   font-size: 1.3em;
+}
+
+/* ====================== Media Queries ====================== */
+@media screen and (max-width: 1370px) {
+  #restaurants-list {
+    grid-template-columns: repeat(4, 25%);
+    column-gap: 1.5em;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  #restaurants-list {
+    grid-template-columns: repeat(3, 33%);
+    column-gap: 1em;
+  }
+}
+
+@media screen and (max-width: 966px) {
+  #restaurants-list {
+    grid-template-columns: repeat(2, 50%);
+    column-gap: 1em;
+  }
+}
+
+@media screen and (max-width: 644px) {
+  #restaurants-list {
+    grid-template-columns: repeat(1, 100%);
+    column-gap: 1em;
+  }
 }
