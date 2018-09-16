@@ -285,14 +285,14 @@ nav h1 a {
 }
 
 /* ====================== Media Queries ====================== */
-@media screen and (max-width: 1370px) {
+@media screen and (max-width: 1633px) {
   #restaurants-list {
     grid-template-columns: repeat(4, 25%);
     column-gap: 1.5em;
   }
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1240px) {
   #restaurants-list {
     grid-template-columns: repeat(3, 33%);
     column-gap: 1em;
