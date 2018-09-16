@@ -165,6 +165,9 @@ const createRestaurantHTML = (restaurant, count) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  // Based on example two from here: https://webaim.org/techniques/alttext/#context
+  // Removing alt text since it doesn't have functionality or add any additional details
+  // that the name does not provide
   image.alt = "";
   li.append(image);
 

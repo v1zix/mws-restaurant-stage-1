@@ -89,6 +89,9 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  // Based on example two from here: https://webaim.org/techniques/alttext/#context
+  // Removing alt text since it doesn't have functionality or add any additional details
+  // that the name does not provide
   image.alt = "";
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -175,7 +178,7 @@ const createReviewHTML = (review) => {
 /**
  * Add restaurant name to the breadcrumb navigation menu
  */
-fillBreadcrumb = (restaurant=self.restaurant) => {
+const fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
@@ -185,7 +188,7 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
 /**
  * Get a parameter by name from page URL.
  */
-getParameterByName = (name, url) => {
+const getParameterByName = (name, url) => {
   if (!url)
     url = window.location.href;
   name = name.replace(/[\[\]]/g, '\\$&');
