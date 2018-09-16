@@ -50,15 +50,19 @@ self.addEventListener('fetch', (event) => {
                     return response;
                 }
 
+
                 // Below is mostly from: 
                 // https://developers.google.com/web/fundamentals/primers/service-workers/#cache_and_return_requests
+                // This will allowing caching of fetched requests that our review page is making. For example,
+                // map tiles, css, etc.
+
                 // IMPORTANT: Clone the request. A request is a stream and
                 // can only be consumed once. Since we are consuming this
                 // once by cache and once by the browser for fetch, we need
                 // to clone the response.
-                let fetchRequest = event.request.clone();
+                let fetchRequestClone = event.request.clone();
 
-                return fetch(fetchRequest).then(
+                return fetch(fetchRequestClone).then(
                     (response) => {
                         // Check if we received a valid response
                         if (!response || response.status !== 200 || response.type !== 'basic') {
